@@ -53,6 +53,7 @@ class ViewController: UIViewController {
     // MARK: IBActions
 
     @IBAction func toggleJammer(sender: AnyObject) {
+        dehighlightButton()
         if jamming {
             microphone.stop()
             resetAmplitudeValues()
@@ -63,22 +64,40 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonDown(sender: AnyObject) {
-        
+        highlightButton()
     }
     @IBAction func buttonExit(sender: AnyObject) {
-        
+        dehighlightButton()
     }
     @IBAction func buttonEnter(sender: AnyObject) {
-        
+        highlightButton()
     }
     
     // MARK: Helper functions
     
-    func setupViews() {
+    private func highlightButton() {
+        let transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.7, 0.7)
+        UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseOut, animations: {
+            
+                self.buttonBackgroundView.transform = transform
+            
+            }, completion: nil)
+    }
+    
+    private func dehighlightButton() {
+        let transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1)
+        UIView.animateWithDuration(0.2, delay: 0, options: .CurveEaseOut, animations: { 
+            
+                self.buttonBackgroundView.transform = transform
+            
+            }, completion: nil)
+    }
+    
+    private func setupViews() {
         buttonBackgroundView.layer.cornerRadius = buttonBackgroundView.bounds.width / 2
     }
     
-    func resetAmplitudeValues() {
+    private func resetAmplitudeValues() {
         lastAmplitudes = [0.0,0.0,0.0]
         currentAmplitudeIndex = 0
         greatestAmplitude = 0.0
