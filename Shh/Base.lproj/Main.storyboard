@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,33 +17,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4l-ck-SOk">
-                                <rect key="frame" x="69" y="263" width="182" height="41"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqk-4X-v1y">
+                                <rect key="frame" x="95" y="219" width="130" height="130"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.98431372549019602" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="182" id="VrM-yP-kKn"/>
+                                    <constraint firstAttribute="width" constant="130" id="aID-7j-kVY"/>
+                                    <constraint firstAttribute="height" constant="130" id="xtq-fj-qZA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Start Jamming"/>
+                            </view>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4l-ck-SOk">
+                                <rect key="frame" x="95" y="219" width="130" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="Ayw-yu-2Je"/>
+                                    <constraint firstAttribute="height" constant="130" id="ea8-dH-5ja"/>
+                                </constraints>
+                                <state key="normal" image="mic"/>
                                 <connections>
+                                    <action selector="buttonDown:" destination="BYZ-38-t0r" eventType="touchDown" id="HML-aC-O6z"/>
+                                    <action selector="buttonEnter:" destination="BYZ-38-t0r" eventType="touchDragEnter" id="KdX-nT-1lu"/>
+                                    <action selector="buttonExit:" destination="BYZ-38-t0r" eventType="touchDragExit" id="JKT-Qm-kyP"/>
                                     <action selector="toggleJammer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ijM-LM-ThN"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bqf-qX-ESg">
-                                <rect key="frame" x="36" y="209" width="248" height="2"/>
-                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speech Jammer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTF-ss-Kbr">
+                                <rect key="frame" x="47" y="89" width="227" height="39"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="32"/>
+                                <color key="textColor" red="0.87843137250000003" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jF3-Pd-O6J">
+                                <rect key="frame" x="125" y="437" width="70" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.87843137250000003" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RuH-Ac-bmh">
+                                <rect key="frame" x="136" y="468" width="51" height="31"/>
+                                <color key="onTintColor" red="0.93333333333333335" green="0.42352941176470588" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
+                            </switch>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.16078431372549018" green="0.19607843137254902" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="bqf-qX-ESg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5LR-Qd-RfH"/>
-                            <constraint firstItem="f4l-ck-SOk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LVA-zN-JCp"/>
-                            <constraint firstItem="bqf-qX-ESg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="do8-70-cQK"/>
-                            <constraint firstItem="f4l-ck-SOk" firstAttribute="top" secondItem="bqf-qX-ESg" secondAttribute="bottom" constant="52" id="tnT-iT-SWt"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bqf-qX-ESg" secondAttribute="trailing" constant="20" id="uBy-an-wEb"/>
-                            <constraint firstItem="f4l-ck-SOk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vvD-rh-nOS"/>
+                            <constraint firstItem="RuH-Ac-bmh" firstAttribute="top" secondItem="jF3-Pd-O6J" secondAttribute="bottom" constant="8" id="6TO-hQ-21N"/>
+                            <constraint firstItem="mqk-4X-v1y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7Sj-gC-6Il"/>
+                            <constraint firstItem="eTF-ss-Kbr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EMF-3s-ov4"/>
+                            <constraint firstItem="eTF-ss-Kbr" firstAttribute="top" secondItem="eQG-6E-HnY" secondAttribute="bottom" constant="69" id="GoT-fi-fw8"/>
+                            <constraint firstItem="f4l-ck-SOk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QtY-rD-doK"/>
+                            <constraint firstItem="mqk-4X-v1y" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Wcx-AJ-myU"/>
+                            <constraint firstItem="RuH-Ac-bmh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ggJ-si-a2b"/>
+                            <constraint firstItem="f4l-ck-SOk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gpY-hz-S3R"/>
+                            <constraint firstItem="jF3-Pd-O6J" firstAttribute="top" secondItem="f4l-ck-SOk" secondAttribute="bottom" constant="88" id="hQg-by-G92"/>
+                            <constraint firstItem="jF3-Pd-O6J" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tAl-E9-q5W"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="amplitudeIndicator" destination="bqf-qX-ESg" id="gDr-DW-OwD"/>
+                        <outlet property="buttonBackgroundView" destination="mqk-4X-v1y" id="EhX-52-Nfg"/>
+                        <outlet property="recordLabel" destination="jF3-Pd-O6J" id="MH2-ZX-v4e"/>
+                        <outlet property="recordSwitch" destination="RuH-Ac-bmh" id="l9I-RG-rV6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -52,4 +81,7 @@
             <point key="canvasLocation" x="234" y="406"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mic" width="38" height="63"/>
+    </resources>
 </document>
