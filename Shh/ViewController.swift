@@ -33,13 +33,17 @@ class ViewController: UIViewController {
         
         setupViews()
         tracker = AKAmplitudeTracker(microphone)
+        delay = AKDelay(tracker!, time: 1.0, dryWetMix: 1.0, feedback: 0)
+        AudioKit.output = tracker!
+        AKSettings.audioInputEnabled = true
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
     override func viewDidAppear(animated: Bool) {
 //        timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(ViewController.measureAmplitude), userInfo: nil, repeats: true)
-        delay = AKDelay(tracker!, time: 0.2, dryWetMix: 1.0, feedback: 0)
-        AudioKit.output = tracker!
-        AKSettings.audioInputEnabled = true
         AudioKit.start()
         microphone.stop()
         tracker?.start()
