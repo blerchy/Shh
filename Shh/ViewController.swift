@@ -79,7 +79,14 @@ class ViewController: UIViewController {
             if currentAmplitudeIndex >= 3 {
                 currentAmplitudeIndex = 0
             }
-            amplitudeIndicator.progress = Float(value / greatestAmplitude)
+            
+            amplitudeIndicator.setProgress(Float(value / greatestAmplitude), animated: true)
+            
+            currentAmplitudeIndex += 1
+            
+            if currentAmplitudeIndex >= 3 {
+                currentAmplitudeIndex = 0
+            }
         }
     }
 
