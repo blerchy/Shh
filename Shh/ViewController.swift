@@ -13,9 +13,11 @@ import AudioKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var toggleButton: UIButton!
     @IBOutlet weak var buttonBackgroundView: UIView!
     @IBOutlet weak var recordSwitch: UISwitch!
     @IBOutlet weak var recordLabel: UILabel!
+    @IBOutlet weak var delaySlider: UISlider!
     
     var microphone = AKMicrophone()
     var delay: AKDelay?
@@ -26,6 +28,9 @@ class ViewController: UIViewController {
     var currentAmplitudeIndex = 0
     var greatestAmplitude: Double = 0.0
     
+    let redColour = UIColor(red: 238, green: 108, blue: 77, alpha: 1)
+    let whiteColour = UIColor(red: 224, green: 251, blue: 252, alpha: 1)
+    
     // MARK: UIView
     
     override func viewDidLoad() {
@@ -33,8 +38,8 @@ class ViewController: UIViewController {
         
         setupViews()
         tracker = AKAmplitudeTracker(microphone)
-        delay = AKDelay(tracker!, time: 1.0, dryWetMix: 1.0, feedback: 0)
-        AudioKit.output = tracker!
+        delay = AKDelay(tracker!, time: 0.2, dryWetMix: 1.0, feedback: 0)
+        AudioKit.output = delay!
         AKSettings.audioInputEnabled = true
     }
     
@@ -43,7 +48,11 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-//        timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(ViewController.measureAmplitude), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.05,
+                                                       target: self,
+                                                       selector: #selector(ViewController.measureAmplitude),
+                                                       userInfo: nil,
+                                                       repeats: true)
         AudioKit.start()
         microphone.stop()
         tracker?.start()
@@ -61,8 +70,10 @@ class ViewController: UIViewController {
         if jamming {
             microphone.stop()
             resetAmplitudeValues()
+            setInactiveColours()
         } else {
             microphone.start()
+            setActiveColours()
         }
         jamming = !jamming
     }
@@ -97,8 +108,21 @@ class ViewController: UIViewController {
             }, completion: nil)
     }
     
+    private func setActiveColours() {
+        UIView.animateWithDuration(0.2) {
+            self.buttonBackgroundView.backgroundColor = self.redColour
+        }
+    }
+    
+    private func setInactiveColours() {
+        UIView.animateWithDuration(0.2) {
+            self.buttonBackgroundView.backgroundColor = self.whiteColour
+        }
+    }
+    
     private func setupViews() {
         buttonBackgroundView.layer.cornerRadius = buttonBackgroundView.bounds.width / 2
+        toggleButton.tintColor = redColour
     }
     
     private func resetAmplitudeValues() {
@@ -107,31 +131,43 @@ class ViewController: UIViewController {
         greatestAmplitude = 0.0
     }
     
-//    func measureAmplitude() {
-//        if jamming {
-//            lastAmplitudes[currentAmplitudeIndex] = tracker!.amplitude
-//            var value: Double = 0.0
-//            for amplitude in lastAmplitudes {
-//                value += amplitude
-//            }
-//            value = value / 3
-//            if value > greatestAmplitude {
-//                greatestAmplitude = value
-//            }
-//            currentAmplitudeIndex += 1
-//            if currentAmplitudeIndex >= 3 {
-//                currentAmplitudeIndex = 0
-//            }
-//            
-//            amplitudeIndicator.setProgress(Float(value / greatestAmplitude), animated: true)
-//            
-//            currentAmplitudeIndex += 1
-//            
-//            if currentAmplitudeIndex >= 3 {
-//                currentAmplitudeIndex = 0
-//            }
-//        }
-//    }
+    func measureAmplitude() {
+        if jamming {
+            lastAmplitudes[currentAmplitudeIndex] = tracker!.amplitude
+            var value: Double = 0.0
+            for amplitude in lastAmplitudes {
+                value += amplitude
+            }
+            value = value / 3
+            if value > greatestAmplitude {
+                greatestAmplitude = value
+            }
+            currentAmplitudeIndex += 1
+            if currentAmplitudeIndex >= 3 {
+                currentAmplitudeIndex = 0
+            }
+            
+            updateButtonBackground(value / greatestAmplitude)
+            
+            currentAmplitudeIndex += 1
+            
+            if currentAmplitudeIndex >= 3 {
+                currentAmplitudeIndex = 0
+            }
+        }
+    }
+    
+    func updateButtonBackground(amplitude: Double) {
+        
+        let transform = CGAffineTransformScale(CGAffineTransformIdentity,
+                                               CGFloat((amplitude / 1.3) + 0.6),
+                                               CGFloat((amplitude / 1.3) + 0.6))
+        
+        UIView.animateWithDuration(0.05, delay: 0, options: .CurveLinear, animations: {
+            self.buttonBackgroundView.transform = transform
+            }, completion: nil)
+        
+    }
 
 }
 

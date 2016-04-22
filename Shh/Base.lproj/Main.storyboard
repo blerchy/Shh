@@ -55,6 +55,13 @@
                                 <rect key="frame" x="136" y="468" width="51" height="31"/>
                                 <color key="onTintColor" red="0.93333333333333335" green="0.42352941176470588" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qUm-3W-TnN">
+                                <rect key="frame" x="69" y="149" width="183" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="179" id="ZtC-ih-ubL"/>
+                                </constraints>
+                                <color key="minimumTrackTintColor" red="0.93333333330000001" green="0.42352941179999998" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" red="0.16078431372549018" green="0.19607843137254902" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -62,18 +69,22 @@
                             <constraint firstItem="mqk-4X-v1y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7Sj-gC-6Il"/>
                             <constraint firstItem="eTF-ss-Kbr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EMF-3s-ov4"/>
                             <constraint firstItem="eTF-ss-Kbr" firstAttribute="top" secondItem="eQG-6E-HnY" secondAttribute="bottom" constant="69" id="GoT-fi-fw8"/>
-                            <constraint firstItem="f4l-ck-SOk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QtY-rD-doK"/>
                             <constraint firstItem="mqk-4X-v1y" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Wcx-AJ-myU"/>
+                            <constraint firstItem="f4l-ck-SOk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YDs-3m-wmS"/>
+                            <constraint firstItem="f4l-ck-SOk" firstAttribute="top" secondItem="qUm-3W-TnN" secondAttribute="bottom" constant="40" id="Z87-Db-bVH"/>
                             <constraint firstItem="RuH-Ac-bmh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ggJ-si-a2b"/>
-                            <constraint firstItem="f4l-ck-SOk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gpY-hz-S3R"/>
-                            <constraint firstItem="jF3-Pd-O6J" firstAttribute="top" secondItem="f4l-ck-SOk" secondAttribute="bottom" constant="88" id="hQg-by-G92"/>
+                            <constraint firstItem="qUm-3W-TnN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hbr-i8-CRj"/>
+                            <constraint firstItem="jF3-Pd-O6J" firstAttribute="top" secondItem="f4l-ck-SOk" secondAttribute="bottom" constant="88" id="hiZ-KJ-Do0"/>
                             <constraint firstItem="jF3-Pd-O6J" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tAl-E9-q5W"/>
+                            <constraint firstItem="f4l-ck-SOk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zHO-Jn-UKw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="buttonBackgroundView" destination="mqk-4X-v1y" id="EhX-52-Nfg"/>
+                        <outlet property="delaySlider" destination="qUm-3W-TnN" id="fzq-xs-Fhr"/>
                         <outlet property="recordLabel" destination="jF3-Pd-O6J" id="MH2-ZX-v4e"/>
                         <outlet property="recordSwitch" destination="RuH-Ac-bmh" id="l9I-RG-rV6"/>
+                        <outlet property="toggleButton" destination="f4l-ck-SOk" id="pUf-0F-BtG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
