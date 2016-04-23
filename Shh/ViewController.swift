@@ -20,16 +20,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var delaySlider: UISlider!
     
     var microphone = AKMicrophone()
-    var delay: AKDelay?
+    var delay: AKVariableDelay?
     var jamming = false
     var timer = NSTimer()
     var tracker: AKAmplitudeTracker?
     var lastAmplitudes: [Double] = [0.0,0.0,0.0]
     var currentAmplitudeIndex = 0
     var greatestAmplitude: Double = 0.0
+    var currentDelay: Double = 0.2
     
     let redColour = UIColor(red: 238, green: 108, blue: 77, alpha: 1)
     let whiteColour = UIColor(red: 224, green: 251, blue: 252, alpha: 1)
+    let lowestDelay: Double = 0.05
+    let highestDelay: Double = 2.0
     
     // MARK: UIView
     
@@ -38,7 +41,7 @@ class ViewController: UIViewController {
         
         setupViews()
         tracker = AKAmplitudeTracker(microphone)
-        delay = AKDelay(tracker!, time: 0.2, dryWetMix: 1.0, feedback: 0)
+        delay = AKVariableDelay(tracker!, time: 0.2, feedback: 0, maximumDelayTime: highestDelay)
         AudioKit.output = delay!
         AKSettings.audioInputEnabled = true
     }
@@ -71,9 +74,12 @@ class ViewController: UIViewController {
             microphone.stop()
             resetAmplitudeValues()
             setInactiveColours()
+            delaySlider.enabled = true
         } else {
             microphone.start()
             setActiveColours()
+//            delaySlider.enabled = false
+            delay!.time = currentDelay
         }
         jamming = !jamming
     }
@@ -86,6 +92,12 @@ class ViewController: UIViewController {
     }
     @IBAction func buttonEnter(sender: AnyObject) {
         highlightButton()
+    }
+    
+    @IBAction func sliderValueChanged(sender: AnyObject) {
+        let slider = sender as! UISlider
+        let delay = (Double(highestDelay - lowestDelay) * Double(slider.value)) + lowestDelay // THESE AREN'T AKOPERATIONS!!! :'(
+        self.delay!.time = delay
     }
     
     // MARK: Helper functions

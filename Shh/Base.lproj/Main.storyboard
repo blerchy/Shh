@@ -61,6 +61,9 @@
                                     <constraint firstAttribute="width" constant="179" id="ZtC-ih-ubL"/>
                                 </constraints>
                                 <color key="minimumTrackTintColor" red="0.93333333330000001" green="0.42352941179999998" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="QrO-a3-QaC"/>
+                                </connections>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" red="0.16078431372549018" green="0.19607843137254902" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
