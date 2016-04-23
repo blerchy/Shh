@@ -13,6 +13,10 @@ class Recording {
     let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
     let fileManager = NSFileManager.defaultManager()
     
+    init() {
+        print(documents)
+    }
+    
     /**
      Creates a new file and returns the ID
      

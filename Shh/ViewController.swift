@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     var jamming = false
     var timer = NSTimer()
     var tracker: AKAmplitudeTracker?
+    var recorder: AKAudioRecorder?
     var lastAmplitudes: [Double] = [0.0,0.0,0.0]
     var currentAmplitudeIndex = 0
     var greatestAmplitude: Double = 0.0
@@ -68,10 +69,29 @@ class ViewController: UIViewController {
     @IBAction func toggleJammer(sender: AnyObject) {
         dehighlightButton()
         if jamming {
+            recordSwitch.enabled = true
+            
+            if recordSwitch.on {
+                recorder!.stop()
+                let alert = UIAlertController(title: "Title Your Recording", message: nil, preferredStyle: .Alert)
+                let action = UIAlertAction(title: "Discard", style: .Destructive, handler: nil)
+                alert.addAction(action)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            
             microphone.stop()
             resetAmplitudeValues()
             setInactiveColours()
         } else {
+            recordSwitch.enabled = false
+            
+            if recordSwitch.on {
+                let recording = Recording()
+                let id = recording.newFile()
+                recorder = AKAudioRecorder("\(id).wav")
+                recorder!.record()
+            }
+            
             microphone.start()
             setActiveColours()
         }
