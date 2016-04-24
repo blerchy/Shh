@@ -111,18 +111,24 @@ class ViewController: UIViewController {
     private func setActiveColours() {
         UIView.animateWithDuration(0.2) {
             self.buttonBackgroundView.backgroundColor = self.redColour
+            self.toggleButton.tintColor = self.whiteColour
         }
     }
     
     private func setInactiveColours() {
         UIView.animateWithDuration(0.2) {
             self.buttonBackgroundView.backgroundColor = self.whiteColour
+            self.toggleButton.tintColor = self.redColour
         }
     }
     
     private func setupViews() {
+        // Make the button background circle shaped, rather than a square
         buttonBackgroundView.layer.cornerRadius = buttonBackgroundView.bounds.width / 2
-        toggleButton.imageView!.image = UIImage(named: "mic")!.imageWithRenderingMode(.AlwaysTemplate)
+        
+        // Change the button image to a template, so it reflects the tint colour
+        let image = UIImage(named: "mic")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        toggleButton.setImage(image, forState: .Normal)
         toggleButton.tintColor = redColour
     }
     
