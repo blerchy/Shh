@@ -74,11 +74,9 @@ class ViewController: UIViewController {
             microphone.stop()
             resetAmplitudeValues()
             setInactiveColours()
-            delaySlider.enabled = true
         } else {
             microphone.start()
             setActiveColours()
-//            delaySlider.enabled = false
             delay!.time = currentDelay
         }
         jamming = !jamming
