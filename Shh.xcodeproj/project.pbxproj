@@ -312,6 +312,7 @@
 				C9E539A61CC5EF7400FCCB44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
