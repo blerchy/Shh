@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var recordSwitch: UISwitch!
     @IBOutlet weak var recordLabel: UILabel!
     @IBOutlet weak var delaySlider: UISlider!
+    @IBOutlet weak var delayLabel: UILabel!
     
     var microphone = AKMicrophone()
     var delay: AKVariableDelay?
@@ -96,6 +97,14 @@ class ViewController: UIViewController {
         let slider = sender as! UISlider
         let delay = (Double(highestDelay - lowestDelay) * Double(slider.value)) + lowestDelay // THESE AREN'T AKOPERATIONS!!! :'(
         self.delay!.time = delay
+        
+        if delay < 1.0 {
+            let userFriendyDelay = Double(round(delay * 10) * 100)
+            delayLabel.text = "\(userFriendyDelay) MILLISECONDS"
+        } else {
+            let userFriendlyDelay = Double(round(delay * 10) / 10)
+            delayLabel.text = "\(userFriendlyDelay) SECONDS"
+        }
     }
     
     // MARK: Helper functions
