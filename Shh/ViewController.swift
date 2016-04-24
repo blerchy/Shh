@@ -28,8 +28,8 @@ class ViewController: UIViewController {
     var currentAmplitudeIndex = 0
     var greatestAmplitude: Double = 0.0
     
-    let redColour = UIColor(red: 238, green: 108, blue: 77, alpha: 1)
-    let whiteColour = UIColor(red: 224, green: 251, blue: 252, alpha: 1)
+    let redColour = UIColor(red: 238/255, green: 108/255, blue: 77/255, alpha: 1)
+    let whiteColour = UIColor(red: 224/255, green: 251/255, blue: 252/255, alpha: 1)
     
     // MARK: UIView
     
@@ -122,6 +122,7 @@ class ViewController: UIViewController {
     
     private func setupViews() {
         buttonBackgroundView.layer.cornerRadius = buttonBackgroundView.bounds.width / 2
+        toggleButton.imageView!.image = UIImage(named: "mic")!.imageWithRenderingMode(.AlwaysTemplate)
         toggleButton.tintColor = redColour
     }
     
