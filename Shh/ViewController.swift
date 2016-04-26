@@ -98,12 +98,12 @@ class ViewController: UIViewController {
         let delay = (Double(highestDelay - lowestDelay) * Double(slider.value)) + lowestDelay // THESE AREN'T AKOPERATIONS!!! :'(
         self.delay!.time = delay
         
-        if delay < 1.0 {
-            let userFriendyDelay = Double(round(delay * 10) * 100)
-            delayLabel.text = "\(userFriendyDelay) MILLISECONDS"
+        let roundedDelay = Int(round(delay * 10))
+        
+        if roundedDelay < 10 {
+            delayLabel.text = "\(roundedDelay * 100) MILLISECONDS"
         } else {
-            let userFriendlyDelay = Double(round(delay * 10) / 10)
-            delayLabel.text = "\(userFriendlyDelay) SECONDS"
+            delayLabel.text = "\(Double(Double(roundedDelay) / 10)) SECONDS"
         }
     }
     
