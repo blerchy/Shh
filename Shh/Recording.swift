@@ -17,6 +17,8 @@ class Recording {
         print(documents)
     }
     
+    // MARK: Class functions
+    
     /**
      Creates a new file and returns the ID
      
@@ -32,12 +34,44 @@ class Recording {
         } else {
             fileManager.createFileAtPath((documents as NSString).stringByAppendingPathComponent(fileName), contents: NSData(), attributes: nil)
             
+            // Add entry to recordings dictionary
+            let recordings = getRecordingsDictionary()
+            let dict = NSMutableDictionary()
+            
+            dict.setObject("New Recording", forKey: "name")
+            dict.setObject(NSDate().timeIntervalSince1970, forKey: "time")
+            
+            recordings.setObject(NSDictionary(dictionary: dict), forKey: "id")
+            saveRecordingsDictionary(dict)
+            
             return id
         }
     }
     
     func getDocumentsPath() -> NSString {
         return (documents as NSString)
+    }
+    
+    // MARK: Helper Functions
+    
+    private func getRecordingsDictionary() -> NSMutableDictionary {
+        return NSMutableDictionary(contentsOfFile: getRecordingsPlistPath() as String)!
+    }
+    
+    private func saveRecordingsDictionary(dict: NSMutableDictionary) {
+        dict.writeToFile(getRecordingsPlistPath() as String, atomically: true)
+    }
+    
+    private func getRecordingsPlistPath() -> NSString {
+        let path = (documents as NSString).stringByAppendingPathComponent("Recordings.plist")
+        
+        // If the file doesn't exist, copy it over from the bundle.
+        if !fileManager.fileExistsAtPath(path) {
+            let bundle = NSBundle.mainBundle().pathForResource("Recordings", ofType: "plist")
+            try! fileManager.copyItemAtPath(bundle!, toPath: path)
+        }
+        
+        return path
     }
     
     private func randomAlphaNumericString(length: Int) -> String {
