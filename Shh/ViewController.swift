@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     var lastAmplitudes: [Double] = [0.0,0.0,0.0]
     var currentAmplitudeIndex = 0
     var greatestAmplitude: Double = 0.0
+    var canRecord = true
     
     let redColour = UIColor(red: 238, green: 108, blue: 77, alpha: 1)
     let whiteColour = UIColor(red: 224, green: 251, blue: 252, alpha: 1)
@@ -57,6 +58,16 @@ class ViewController: UIViewController {
         AudioKit.start()
         microphone.stop()
         tracker?.start()
+        
+        // Try to set the input device to the microphone, disable recording if it couldn't.
+        do {
+            try AudioKit.setInputDevice(AudioKit.availableInputs!.first!)
+            print("Tried!")
+        } catch {
+            canRecord = false
+            recordSwitch.enabled = false
+            print("Caught!")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,12 +80,13 @@ class ViewController: UIViewController {
     @IBAction func toggleJammer(sender: AnyObject) {
         dehighlightButton()
         if jamming {
-            recordSwitch.enabled = true
+            // If recording is enabled, enable the switch.
+            recordSwitch.enabled = canRecord
             
             if recordSwitch.on {
                 recorder!.stop()
                 let alert = UIAlertController(title: "Title Your Recording", message: nil, preferredStyle: .Alert)
-                let action = UIAlertAction(title: "Discard", style: .Destructive, handler: nil)
+                let action = UIAlertAction(title: "Okay", style: .Default, handler: nil)
                 alert.addAction(action)
                 self.presentViewController(alert, animated: true, completion: nil)
             }
@@ -88,7 +100,7 @@ class ViewController: UIViewController {
             if recordSwitch.on {
                 let recording = Recording()
                 let id = recording.newFile()
-                recorder = AKAudioRecorder("\(id).wav")
+                recorder = AKAudioRecorder(recording.getDocumentsPath().stringByAppendingPathComponent("\(id).wav"))
                 recorder!.record()
             }
             

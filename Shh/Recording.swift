@@ -36,6 +36,10 @@ class Recording {
         }
     }
     
+    func getDocumentsPath() -> NSString {
+        return (documents as NSString)
+    }
+    
     private func randomAlphaNumericString(length: Int) -> String {
         // Thanks http://stackoverflow.com/questions/26845307/generate-random-alphanumeric-string-in-swift
         
