@@ -41,8 +41,8 @@ class Recording {
             dict.setObject("New Recording", forKey: "name")
             dict.setObject(NSDate().timeIntervalSince1970, forKey: "time")
             
-            recordings.setObject(NSDictionary(dictionary: dict), forKey: "id")
-            saveRecordingsDictionary(dict)
+            recordings.setObject(NSDictionary(dictionary: dict), forKey: id)
+            saveRecordingsDictionary(recordings)
             
             return id
         }
