@@ -48,6 +48,16 @@ class Recording {
         }
     }
     
+    func renameRecording(id id: String, newName: String) {
+        let recordings = getRecordingsDictionary()
+        
+        if let dict = recordings.objectForKey(id) as? NSMutableDictionary {
+            dict.setObject(newName, forKey: "name")
+            recordings.setObject(dict, forKey: id)
+            saveRecordingsDictionary(recordings)
+        }
+    }
+    
     func getDocumentsPath() -> NSString {
         return (documents as NSString)
     }

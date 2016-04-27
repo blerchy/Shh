@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     var currentAmplitudeIndex = 0
     var greatestAmplitude: Double = 0.0
     var canRecord = true
+    var lastRecordingID = ""
     
     let redColour = UIColor(red: 238, green: 108, blue: 77, alpha: 1)
     let whiteColour = UIColor(red: 224, green: 251, blue: 252, alpha: 1)
@@ -86,7 +87,20 @@ class ViewController: UIViewController {
             if recordSwitch.on {
                 recorder!.stop()
                 let alert = UIAlertController(title: "Title Your Recording", message: nil, preferredStyle: .Alert)
-                let action = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                let action = UIAlertAction(title: "Okay", style: .Default) { _ in
+                    if let field = alert.textFields?[0] {
+                        let recording = Recording()
+                        
+                        // Renames the last recording. If the text field is blank, it'll be renamed to "New Recording" instead.
+                        recording.renameRecording(id: self.lastRecordingID, newName: field.text! != "" ? field.text! : "New Recording")
+                    }
+                }
+                
+                // Add text field to alert
+                alert.addTextFieldWithConfigurationHandler() { textField in
+                    textField.placeholder = "New Recording"
+                }
+                
                 alert.addAction(action)
                 self.presentViewController(alert, animated: true, completion: nil)
             }
@@ -101,6 +115,7 @@ class ViewController: UIViewController {
                 let recording = Recording()
                 let id = recording.newFile()
                 recorder = AKAudioRecorder(recording.getDocumentsPath().stringByAppendingPathComponent("\(id).wav"))
+                lastRecordingID = id
                 recorder!.record()
             }
             
