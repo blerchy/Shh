@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9157B1C1CD0399D00879F00 /* RecordingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9157B1B1CD0399D00879F00 /* RecordingsViewController.swift */; };
 		C99247321CCF31AF0070B2AD /* Recordings.plist in Resources */ = {isa = PBXBuildFile; fileRef = C99247311CCF31AF0070B2AD /* Recordings.plist */; };
 		C9D4917B1CC9E8130004580B /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D4917A1CC9E8130004580B /* Recording.swift */; };
 		C9E539961CC5EF7400FCCB44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E539951CC5EF7400FCCB44 /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C9157B1B1CD0399D00879F00 /* RecordingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsViewController.swift; sourceTree = "<group>"; };
 		C99247311CCF31AF0070B2AD /* Recordings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Recordings.plist; sourceTree = "<group>"; };
 		C9D4917A1CC9E8130004580B /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		C9E539921CC5EF7400FCCB44 /* Shh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +90,7 @@
 				C99247301CCF31920070B2AD /* Resources */,
 				C9E539951CC5EF7400FCCB44 /* AppDelegate.swift */,
 				C9E539971CC5EF7400FCCB44 /* ViewController.swift */,
+				C9157B1B1CD0399D00879F00 /* RecordingsViewController.swift */,
 				C9D4917A1CC9E8130004580B /* Recording.swift */,
 				C9E539991CC5EF7400FCCB44 /* Main.storyboard */,
 				C9E5399C1CC5EF7400FCCB44 /* Assets.xcassets */,
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9157B1C1CD0399D00879F00 /* RecordingsViewController.swift in Sources */,
 				C9E539981CC5EF7400FCCB44 /* ViewController.swift in Sources */,
 				C9D4917B1CC9E8130004580B /* Recording.swift in Sources */,
 				C9E539961CC5EF7400FCCB44 /* AppDelegate.swift in Sources */,

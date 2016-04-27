@@ -13,10 +13,6 @@ class Recording {
     let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
     let fileManager = NSFileManager.defaultManager()
     
-    init() {
-        print(documents)
-    }
-    
     // MARK: Class functions
     
     /**
@@ -56,6 +52,23 @@ class Recording {
             recordings.setObject(dict, forKey: id)
             saveRecordingsDictionary(recordings)
         }
+    }
+    
+    func getRecordingIDs() -> [String] {
+        return getRecordingsDictionary().allKeys as! [String]
+    }
+    
+    func getInfoOnID(id id: String) -> (name: String, time: Double)? {
+        let recordings = getRecordingsDictionary()
+        let dict = recordings.objectForKey(id)
+        
+        if let name = dict?.objectForKey("name") {
+            if let time = dict?.objectForKey("time") {
+                return (name: name as! String, time: time as! Double)
+            }
+        }
+        
+        return nil
     }
     
     func getDocumentsPath() -> NSString {
