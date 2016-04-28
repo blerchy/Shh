@@ -18,9 +18,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var recordSwitch: UISwitch!
     @IBOutlet weak var recordLabel: UILabel!
     @IBOutlet weak var delaySlider: UISlider!
+    @IBOutlet weak var delayLabel: UILabel!
     
     var microphone = AKMicrophone()
-    var delay: AKDelay?
+    var delay: AKVariableDelay?
     var jamming = false
     var timer = NSTimer()
     var tracker: AKAmplitudeTracker?
@@ -28,11 +29,14 @@ class ViewController: UIViewController {
     var lastAmplitudes: [Double] = [0.0,0.0,0.0]
     var currentAmplitudeIndex = 0
     var greatestAmplitude: Double = 0.0
+    var currentDelay: Double = 0.2
     var canRecord = true
     var lastRecordingID = ""
     
     let redColour = UIColor(red: 238/255, green: 108/255, blue: 77/255, alpha: 1)
     let whiteColour = UIColor(red: 224/255, green: 251/255, blue: 252/255, alpha: 1)
+    let lowestDelay: Double = 0.05
+    let highestDelay: Double = 2.0
     
     // MARK: UIView
     
@@ -53,7 +57,7 @@ class ViewController: UIViewController {
                                                        userInfo: nil,
                                                        repeats: true)
         tracker = AKAmplitudeTracker(microphone)
-        delay = AKDelay(tracker!, time: 0.2, dryWetMix: 1.0, feedback: 0)
+        delay = AKVariableDelay(tracker!, time: 0.2, feedback: 0, maximumDelayTime: highestDelay)
         AudioKit.output = delay!
         AKSettings.audioInputEnabled = true
         AudioKit.start()
@@ -120,6 +124,7 @@ class ViewController: UIViewController {
             
             microphone.start()
             setActiveColours()
+            delay!.time = currentDelay
         }
         jamming = !jamming
     }
@@ -132,6 +137,20 @@ class ViewController: UIViewController {
     }
     @IBAction func buttonEnter(sender: AnyObject) {
         highlightButton()
+    }
+    
+    @IBAction func sliderValueChanged(sender: AnyObject) {
+        let slider = sender as! UISlider
+        let delay = (Double(highestDelay - lowestDelay) * Double(slider.value)) + lowestDelay // THESE AREN'T AKOPERATIONS!!! :'(
+        self.delay!.time = delay
+        
+        let roundedDelay = Int(round(delay * 10))
+        
+        if roundedDelay < 10 {
+            delayLabel.text = "\(roundedDelay * 100) MILLISECONDS"
+        } else {
+            delayLabel.text = "\(Double(Double(roundedDelay) / 10)) SECONDS"
+        }
     }
     
     @IBAction func showRecordings(sender: AnyObject) {
