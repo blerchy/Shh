@@ -40,10 +40,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
-        tracker = AKAmplitudeTracker(microphone)
-        delay = AKDelay(tracker!, time: 0.2, dryWetMix: 1.0, feedback: 0)
-        AudioKit.output = delay!
-        AKSettings.audioInputEnabled = true
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -56,6 +52,10 @@ class ViewController: UIViewController {
                                                        selector: #selector(ViewController.measureAmplitude),
                                                        userInfo: nil,
                                                        repeats: true)
+        tracker = AKAmplitudeTracker(microphone)
+        delay = AKDelay(tracker!, time: 0.2, dryWetMix: 1.0, feedback: 0)
+        AudioKit.output = delay!
+        AKSettings.audioInputEnabled = true
         AudioKit.start()
         microphone.stop()
         tracker?.start()
@@ -63,7 +63,6 @@ class ViewController: UIViewController {
         // Try to set the input device to the microphone, disable recording if it couldn't.
         do {
             try AudioKit.setInputDevice(AudioKit.availableInputs!.first!)
-            print("Tried!")
         } catch {
             canRecord = false
             recordSwitch.enabled = false
