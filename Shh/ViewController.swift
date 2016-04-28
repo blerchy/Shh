@@ -146,8 +146,17 @@ class ViewController: UIViewController {
         
         let roundedDelay = Int(round(delay * 10))
         
+        delayLabel.textColor = whiteColour
+        delayLabel.alpha = 0.4
+        
         if roundedDelay < 10 {
             delayLabel.text = "\(roundedDelay * 100) MILLISECONDS"
+            
+            if roundedDelay * 100 == 200 {
+                delayLabel.textColor = redColour
+                delayLabel.alpha = 1
+            }
+            
         } else {
             delayLabel.text = "\(Double(Double(roundedDelay) / 10)) SECONDS"
         }
