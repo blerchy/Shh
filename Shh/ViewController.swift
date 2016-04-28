@@ -24,9 +24,12 @@ class ViewController: UIViewController {
     var jamming = false
     var timer = NSTimer()
     var tracker: AKAmplitudeTracker?
+    var recorder: AKAudioRecorder?
     var lastAmplitudes: [Double] = [0.0,0.0,0.0]
     var currentAmplitudeIndex = 0
     var greatestAmplitude: Double = 0.0
+    var canRecord = true
+    var lastRecordingID = ""
     
     let redColour = UIColor(red: 238/255, green: 108/255, blue: 77/255, alpha: 1)
     let whiteColour = UIColor(red: 224/255, green: 251/255, blue: 252/255, alpha: 1)
@@ -37,10 +40,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
-        tracker = AKAmplitudeTracker(microphone)
-        delay = AKDelay(tracker!, time: 0.2, dryWetMix: 1.0, feedback: 0)
-        AudioKit.output = delay!
-        AKSettings.audioInputEnabled = true
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -53,9 +52,22 @@ class ViewController: UIViewController {
                                                        selector: #selector(ViewController.measureAmplitude),
                                                        userInfo: nil,
                                                        repeats: true)
+        tracker = AKAmplitudeTracker(microphone)
+        delay = AKDelay(tracker!, time: 0.2, dryWetMix: 1.0, feedback: 0)
+        AudioKit.output = delay!
+        AKSettings.audioInputEnabled = true
         AudioKit.start()
         microphone.stop()
         tracker?.start()
+        
+        // Try to set the input device to the microphone, disable recording if it couldn't.
+        do {
+            try AudioKit.setInputDevice(AudioKit.availableInputs!.first!)
+        } catch {
+            canRecord = false
+            recordSwitch.enabled = false
+            print("Caught!")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,10 +80,44 @@ class ViewController: UIViewController {
     @IBAction func toggleJammer(sender: AnyObject) {
         dehighlightButton()
         if jamming {
+            // If recording is enabled, enable the switch.
+            recordSwitch.enabled = canRecord
+            
+            if recordSwitch.on {
+                recorder!.stop()
+                let alert = UIAlertController(title: "Title Your Recording", message: nil, preferredStyle: .Alert)
+                let action = UIAlertAction(title: "Okay", style: .Default) { _ in
+                    if let field = alert.textFields?[0] {
+                        let recording = Recording()
+                        
+                        // Renames the last recording. If the text field is blank, it'll be renamed to "New Recording" instead.
+                        recording.renameRecording(id: self.lastRecordingID, newName: field.text! != "" ? field.text! : "New Recording")
+                    }
+                }
+                
+                // Add text field to alert
+                alert.addTextFieldWithConfigurationHandler() { textField in
+                    textField.placeholder = "New Recording"
+                }
+                
+                alert.addAction(action)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            
             microphone.stop()
             resetAmplitudeValues()
             setInactiveColours()
         } else {
+            recordSwitch.enabled = false
+            
+            if recordSwitch.on {
+                let recording = Recording()
+                let id = recording.newFile()
+                recorder = AKAudioRecorder(recording.getDocumentsPath().stringByAppendingPathComponent("\(id).wav"))
+                lastRecordingID = id
+                recorder!.record()
+            }
+            
             microphone.start()
             setActiveColours()
         }
@@ -86,6 +132,11 @@ class ViewController: UIViewController {
     }
     @IBAction func buttonEnter(sender: AnyObject) {
         highlightButton()
+    }
+    
+    @IBAction func showRecordings(sender: AnyObject) {
+        AudioKit.stop()
+        performSegueWithIdentifier("recordingsSegue", sender: self)
     }
     
     // MARK: Helper functions
