@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9008FD51CD1979E00CFAE09 /* silence.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9008FD41CD1979E00CFAE09 /* silence.wav */; };
 		C9157B1C1CD0399D00879F00 /* RecordingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9157B1B1CD0399D00879F00 /* RecordingsViewController.swift */; };
+		C9157B1E1CD07AD000879F00 /* RecordingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9157B1D1CD07AD000879F00 /* RecordingCell.swift */; };
 		C99247321CCF31AF0070B2AD /* Recordings.plist in Resources */ = {isa = PBXBuildFile; fileRef = C99247311CCF31AF0070B2AD /* Recordings.plist */; };
 		C9D4917B1CC9E8130004580B /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D4917A1CC9E8130004580B /* Recording.swift */; };
 		C9E539961CC5EF7400FCCB44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E539951CC5EF7400FCCB44 /* AppDelegate.swift */; };
@@ -34,7 +36,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C9008FD41CD1979E00CFAE09 /* silence.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = silence.wav; sourceTree = "<group>"; };
 		C9157B1B1CD0399D00879F00 /* RecordingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsViewController.swift; sourceTree = "<group>"; };
+		C9157B1D1CD07AD000879F00 /* RecordingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingCell.swift; sourceTree = "<group>"; };
 		C99247311CCF31AF0070B2AD /* Recordings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Recordings.plist; sourceTree = "<group>"; };
 		C9D4917A1CC9E8130004580B /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		C9E539921CC5EF7400FCCB44 /* Shh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +66,7 @@
 		C99247301CCF31920070B2AD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9008FD41CD1979E00CFAE09 /* silence.wav */,
 				C99247311CCF31AF0070B2AD /* Recordings.plist */,
 			);
 			name = Resources;
@@ -92,6 +97,7 @@
 				C9E539971CC5EF7400FCCB44 /* ViewController.swift */,
 				C9157B1B1CD0399D00879F00 /* RecordingsViewController.swift */,
 				C9D4917A1CC9E8130004580B /* Recording.swift */,
+				C9157B1D1CD07AD000879F00 /* RecordingCell.swift */,
 				C9E539991CC5EF7400FCCB44 /* Main.storyboard */,
 				C9E5399C1CC5EF7400FCCB44 /* Assets.xcassets */,
 				C9E5399E1CC5EF7400FCCB44 /* LaunchScreen.storyboard */,
@@ -162,6 +168,7 @@
 				C9E539A01CC5EF7400FCCB44 /* LaunchScreen.storyboard in Resources */,
 				C9E5399D1CC5EF7400FCCB44 /* Assets.xcassets in Resources */,
 				C99247321CCF31AF0070B2AD /* Recordings.plist in Resources */,
+				C9008FD51CD1979E00CFAE09 /* silence.wav in Resources */,
 				C9E5399B1CC5EF7400FCCB44 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +183,7 @@
 				C9157B1C1CD0399D00879F00 /* RecordingsViewController.swift in Sources */,
 				C9E539981CC5EF7400FCCB44 /* ViewController.swift in Sources */,
 				C9D4917B1CC9E8130004580B /* Recording.swift in Sources */,
+				C9157B1E1CD07AD000879F00 /* RecordingCell.swift in Sources */,
 				C9E539961CC5EF7400FCCB44 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

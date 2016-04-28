@@ -135,6 +135,11 @@ class ViewController: UIViewController {
         highlightButton()
     }
     
+    @IBAction func showRecordings(sender: AnyObject) {
+        AudioKit.stop()
+        performSegueWithIdentifier("recordingsSegue", sender: self)
+    }
+    
     // MARK: Helper functions
     
     private func highlightButton() {
