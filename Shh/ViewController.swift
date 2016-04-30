@@ -60,6 +60,7 @@ class ViewController: UIViewController {
         delay = AKVariableDelay(tracker!, time: 0.2, feedback: 0, maximumDelayTime: highestDelay)
         AudioKit.output = delay!
         AKSettings.audioInputEnabled = true
+        AKSettings.defaultToSpeaker = true
         AudioKit.start()
         microphone.stop()
         tracker?.start()
