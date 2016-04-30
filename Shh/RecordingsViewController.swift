@@ -69,6 +69,23 @@ class RecordingsViewController: UIViewController {
 
 extension RecordingsViewController: UITableViewDelegate {
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as! RecordingCell
+            let recording = Recording()
+            do {
+                try recording.deleteRecording(id: cell.id)
+                tableView.reloadData()
+                stopPlaying()
+            } catch {
+                let alert = UIAlertController(title: "Oh oh...", message: "Something went wrong, and your recording couldn't be deleted. Sorry about that.", preferredStyle: .Alert)
+                let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                alert.addAction(okButton)
+                presentViewController(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
 }
 
 // MARK: - Table View Data Source

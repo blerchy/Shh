@@ -15,6 +15,10 @@ class Recording {
     
     // MARK: Class functions
     
+    init() {
+        print(documents)
+    }
+    
     /**
      Creates a new file and returns the ID
      
@@ -69,6 +73,13 @@ class Recording {
         }
         
         return nil
+    }
+    
+    func deleteRecording(id id: String) throws {
+        try fileManager.removeItemAtPath(getDocumentsPath().stringByAppendingPathComponent("\(id).wav"))
+        let recordings = getRecordingsDictionary()
+        recordings.removeObjectForKey(id)
+        saveRecordingsDictionary(recordings)
     }
     
     func getDocumentsPath() -> NSString {
