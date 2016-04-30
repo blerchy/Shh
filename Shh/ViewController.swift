@@ -73,6 +73,8 @@ class ViewController: UIViewController {
             recordSwitch.enabled = false
             print("Caught!")
         }
+        
+        showTutorial()
     }
 
     override func didReceiveMemoryWarning() {
@@ -169,6 +171,19 @@ class ViewController: UIViewController {
     }
     
     // MARK: Helper functions
+    
+    private func showTutorial() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let key = "tutorialShown"
+        if !defaults.boolForKey(key) {
+            print("Showing tutorial")
+            
+            defaults.setBool(true, forKey: key)
+            performSegueWithIdentifier("tutorialSegue", sender: self)
+        } else {
+            print("Not showing tutorial")
+        }
+    }
     
     private func highlightButton() {
         let transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.7, 0.7)
