@@ -51,30 +51,30 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.05,
-                                                       target: self,
-                                                       selector: #selector(ViewController.measureAmplitude),
-                                                       userInfo: nil,
-                                                       repeats: true)
-        tracker = AKAmplitudeTracker(microphone)
-        delay = AKVariableDelay(tracker!, time: 0.2, feedback: 0, maximumDelayTime: highestDelay)
-        AudioKit.output = delay!
-        AKSettings.audioInputEnabled = true
-        AKSettings.defaultToSpeaker = true
-        AudioKit.start()
-        microphone.stop()
-        tracker?.start()
-        
-        // Try to set the input device to the microphone, disable recording if it couldn't.
-        do {
-            try AudioKit.setInputDevice(AudioKit.availableInputs!.first!)
-        } catch {
-            canRecord = false
-            recordSwitch.enabled = false
-            print("Caught!")
+        if !showTutorial() {
+            timer = NSTimer.scheduledTimerWithTimeInterval(0.05,
+                                                           target: self,
+                                                           selector: #selector(ViewController.measureAmplitude),
+                                                           userInfo: nil,
+                                                           repeats: true)
+            tracker = AKAmplitudeTracker(microphone)
+            delay = AKVariableDelay(tracker!, time: 0.2, feedback: 0, maximumDelayTime: highestDelay)
+            AudioKit.output = delay!
+            AKSettings.audioInputEnabled = true
+            AKSettings.defaultToSpeaker = true
+            AudioKit.start()
+            microphone.stop()
+            tracker?.start()
+            
+            // Try to set the input device to the microphone, disable recording if it couldn't.
+            do {
+                try AudioKit.setInputDevice(AudioKit.availableInputs!.first!)
+            } catch {
+                canRecord = false
+                recordSwitch.enabled = false
+                print("Caught!")
+            }
         }
-        
-        showTutorial()
     }
 
     override func didReceiveMemoryWarning() {
@@ -172,7 +172,7 @@ class ViewController: UIViewController {
     
     // MARK: Helper functions
     
-    private func showTutorial() {
+    private func showTutorial() -> Bool {
         let defaults = NSUserDefaults.standardUserDefaults()
         let key = "tutorialShown"
         if !defaults.boolForKey(key) {
@@ -180,8 +180,10 @@ class ViewController: UIViewController {
             
             defaults.setBool(true, forKey: key)
             performSegueWithIdentifier("tutorialSegue", sender: self)
+            return true
         } else {
             print("Not showing tutorial")
+            return false
         }
     }
     
