@@ -117,6 +117,7 @@
 				C9E5398F1CC5EF7400FCCB44 /* Frameworks */,
 				C9E539901CC5EF7400FCCB44 /* Resources */,
 				C9E539AA1CC5EFA400FCCB44 /* Embed Frameworks */,
+				5E0FF078B56081D3942CC30E /* Tailor */,
 			);
 			buildRules = (
 			);
@@ -175,6 +176,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5E0FF078B56081D3942CC30E /* Tailor */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Tailor;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if hash tailor 2>/dev/null; then\n  tailor --except=trailing-whitespace\nelse\n  echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C9E5398E1CC5EF7400FCCB44 /* Sources */ = {

@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     var timer = NSTimer()
     var tracker: AKAmplitudeTracker?
     var recorder: AKAudioRecorder?
-    var lastAmplitudes: [Double] = [0.0,0.0,0.0]
+    var lastAmplitudes: [Double] = [0.0, 0.0, 0.0]
     var currentAmplitudeIndex = 0
     var greatestAmplitude: Double = 0.0
     var currentDelay: Double = 0.2
@@ -101,7 +101,7 @@ class ViewController: UIViewController {
                 }
                 
                 // Add text field to alert
-                alert.addTextFieldWithConfigurationHandler() { textField in
+                alert.addTextFieldWithConfigurationHandler { textField in
                     textField.placeholder = "New Recording"
                 }
                 
@@ -133,33 +133,36 @@ class ViewController: UIViewController {
     @IBAction func buttonDown(sender: AnyObject) {
         highlightButton()
     }
+
     @IBAction func buttonExit(sender: AnyObject) {
         dehighlightButton()
     }
+
     @IBAction func buttonEnter(sender: AnyObject) {
         highlightButton()
     }
-    
+
     @IBAction func sliderValueChanged(sender: AnyObject) {
-        let slider = sender as! UISlider
-        let delay = (Double(highestDelay - lowestDelay) * Double(slider.value)) + lowestDelay // THESE AREN'T AKOPERATIONS!!! :'(
-        self.delay!.time = delay
-        
-        let roundedDelay = Int(round(delay * 10))
-        
-        delayLabel.textColor = whiteColour
-        delayLabel.alpha = 0.4
-        
-        if roundedDelay < 10 {
-            delayLabel.text = "\(roundedDelay * 100) MILLISECONDS"
-            
-            if roundedDelay * 100 == 200 {
-                delayLabel.textColor = redColour
-                delayLabel.alpha = 1
+        if let slider = sender as? UISlider {
+            let delay = (Double(highestDelay - lowestDelay) * Double(slider.value)) + lowestDelay // THESE AREN'T AKOPERATIONS!!! :'(
+            self.delay!.time = delay
+
+            let roundedDelay = Int(round(delay * 10))
+
+            delayLabel.textColor = whiteColour
+            delayLabel.alpha = 0.4
+
+            if roundedDelay < 10 {
+                delayLabel.text = "\(roundedDelay * 100) MILLISECONDS"
+
+                if roundedDelay * 100 == 200 {
+                    delayLabel.textColor = redColour
+                    delayLabel.alpha = 1
+                }
+
+            } else {
+                delayLabel.text = "\(Double(Double(roundedDelay) / 10)) SECONDS"
             }
-            
-        } else {
-            delayLabel.text = "\(Double(Double(roundedDelay) / 10)) SECONDS"
         }
     }
     
@@ -213,7 +216,7 @@ class ViewController: UIViewController {
     }
     
     private func resetAmplitudeValues() {
-        lastAmplitudes = [0.0,0.0,0.0]
+        lastAmplitudes = [0.0, 0.0, 0.0]
         currentAmplitudeIndex = 0
         greatestAmplitude = 0.0
     }
@@ -257,4 +260,3 @@ class ViewController: UIViewController {
     }
 
 }
-
