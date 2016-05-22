@@ -38,6 +38,7 @@ class Recording {
             let recordings = getRecordingsDictionary()
             let dict = NSMutableDictionary()
             
+            dict.setObject(id, forKey: "id")
             dict.setObject("New Recording", forKey: "name")
             dict.setObject(NSDate().timeIntervalSince1970, forKey: "time")
             
@@ -58,9 +59,29 @@ class Recording {
         }
     }
     
-    func getRecordingIDs() -> [String] {
+    @available(*,deprecated) func getRecordingIDs() -> [String] {
         return getRecordingsDictionary().allKeys as! [String]
     }
+    
+    // tailor:off
+    func getOrderedRecordingIDs() -> [String] {
+        let sortedDictionaryIDsArray = getRecordingsDictionary().keysSortedByValueUsingComparator {
+            (obj1: AnyObject, obj2: AnyObject) -> NSComparisonResult in
+            
+            let dict1 = obj1 as! NSDictionary
+            let dict2 = obj2 as! NSDictionary
+            
+            let time1 = dict1.valueForKey("time")! as! NSNumber
+            let time2 = dict2.valueForKey("time")! as! NSNumber
+            
+            // Sorts recordings in reverse chronological order.
+            return time2.compare(time1)
+        }
+        
+        return sortedDictionaryIDsArray as! [String]
+        
+    }
+    // tailor:on
     
     func getInfoOnID(id id: String) -> (name: String, time: Double)? {
         let recordings = getRecordingsDictionary()

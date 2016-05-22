@@ -94,12 +94,12 @@ extension RecordingsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let recording = Recording()
-        return recording.getRecordingIDs().count
+        return recording.getOrderedRecordingIDs().count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let recording = Recording()
-        let id = recording.getRecordingIDs()[indexPath.row]
+        let id = recording.getOrderedRecordingIDs()[indexPath.row]
         let recordingInfo = recording.getInfoOnID(id: id)
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! RecordingCell
         let dateFormatter = NSDateFormatter()
