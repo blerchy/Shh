@@ -6,6 +6,70 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Tutorial View Controller-->
+        <scene sceneID="f6P-1I-Nyf">
+            <objects>
+                <viewController id="uIj-UJ-diQ" customClass="TutorialViewController" customModule="Shh" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JZ7-1I-hbv"/>
+                        <viewControllerLayoutGuide type="bottom" id="bpC-iq-jjE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YlW-fE-Qgv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introduction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CzJ-Tu-8Pl">
+                                <rect key="frame" x="77" y="60" width="166" height="39"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="32"/>
+                                <color key="textColor" red="0.87843137250000003" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guy" translatesAutoresizingMaskIntoConstraints="NO" id="vUY-cT-1PL">
+                                <rect key="frame" x="0.0" y="97" width="320" height="169"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="169" id="CCL-JV-eZc"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Introduction text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUt-dY-kzr">
+                                <rect key="frame" x="12" y="274" width="296" height="212"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.87843137250000003" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAJ-Ko-A8i">
+                                <rect key="frame" x="82" y="494" width="156" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Let's Get Started!">
+                                    <color key="titleColor" red="0.93333333330000001" green="0.42352941179999998" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goButtonPressed:" destination="uIj-UJ-diQ" eventType="touchUpInside" id="z3N-2l-qoV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16078431369999999" green="0.1960784314" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="vUY-cT-1PL" firstAttribute="top" secondItem="CzJ-Tu-8Pl" secondAttribute="bottom" constant="-2" id="0aK-I4-flv"/>
+                            <constraint firstAttribute="trailing" secondItem="vUY-cT-1PL" secondAttribute="trailing" id="2yZ-uB-9uQ"/>
+                            <constraint firstItem="xAJ-Ko-A8i" firstAttribute="top" secondItem="NUt-dY-kzr" secondAttribute="bottom" constant="8" id="6KB-Cr-IRy"/>
+                            <constraint firstItem="CzJ-Tu-8Pl" firstAttribute="top" secondItem="JZ7-1I-hbv" secondAttribute="bottom" constant="40" id="6ar-Bh-CdY"/>
+                            <constraint firstItem="bpC-iq-jjE" firstAttribute="top" secondItem="xAJ-Ko-A8i" secondAttribute="bottom" constant="38" id="FR8-cN-RTc"/>
+                            <constraint firstItem="xAJ-Ko-A8i" firstAttribute="centerX" secondItem="YlW-fE-Qgv" secondAttribute="centerX" id="PS1-VX-4De"/>
+                            <constraint firstItem="vUY-cT-1PL" firstAttribute="leading" secondItem="YlW-fE-Qgv" secondAttribute="leading" id="VwX-Ig-eYM"/>
+                            <constraint firstItem="NUt-dY-kzr" firstAttribute="trailing" secondItem="YlW-fE-Qgv" secondAttribute="trailingMargin" constant="4" id="Yfg-pl-Ewd"/>
+                            <constraint firstItem="CzJ-Tu-8Pl" firstAttribute="centerX" secondItem="YlW-fE-Qgv" secondAttribute="centerX" id="gue-Ml-JNn"/>
+                            <constraint firstItem="NUt-dY-kzr" firstAttribute="leading" secondItem="YlW-fE-Qgv" secondAttribute="leadingMargin" constant="-4" id="kAa-Pw-11V"/>
+                            <constraint firstItem="NUt-dY-kzr" firstAttribute="top" secondItem="vUY-cT-1PL" secondAttribute="bottom" constant="8" id="qhy-Cd-vAm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="introText" destination="NUt-dY-kzr" id="JEy-jb-3b2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dZB-hd-MK0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="1217"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -125,6 +189,7 @@
                         <outlet property="recordSwitch" destination="RuH-Ac-bmh" id="l9I-RG-rV6"/>
                         <outlet property="toggleButton" destination="f4l-ck-SOk" id="pUf-0F-BtG"/>
                         <segue destination="HnD-Qj-aAW" kind="modal" identifier="recordingsSegue" id="4vQ-LN-dtK"/>
+                        <segue destination="uIj-UJ-diQ" kind="modal" identifier="tutorialSegue" id="afr-Ec-UBe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -240,6 +305,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="guy" width="134" height="118"/>
         <image name="mic" width="38" height="63"/>
     </resources>
 </document>
