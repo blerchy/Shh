@@ -121,6 +121,7 @@
 				C9E539901CC5EF7400FCCB44 /* Resources */,
 				C9E539AA1CC5EFA400FCCB44 /* Embed Frameworks */,
 				5E0FF078B56081D3942CC30E /* Tailor */,
+				C993B8021CF419EF001E4FBB /* Fix AudioKit */,
 			);
 			buildRules = (
 			);
@@ -194,6 +195,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if hash tailor 2>/dev/null; then\n  tailor --except=trailing-whitespace\nelse\n  echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
+		};
+		C993B8021CF419EF001E4FBB /* Fix AudioKit */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fix AudioKit";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/AudioKit.framework/fix-framework.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 
