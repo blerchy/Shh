@@ -27,4 +27,5 @@ class RecordingCell: UITableViewCell {
             playing = true
         }
     }
+    
 }
