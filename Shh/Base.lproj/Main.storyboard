@@ -31,35 +31,49 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Introduction text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUt-dY-kzr">
-                                <rect key="frame" x="12" y="274" width="296" height="212"/>
+                                <rect key="frame" x="12" y="258" width="296" height="228"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="228" id="vs9-FM-7XT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.87843137250000003" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAJ-Ko-A8i">
-                                <rect key="frame" x="82" y="494" width="156" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Let's Get Started!">
-                                    <color key="titleColor" red="0.93333333330000001" green="0.42352941179999998" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="goButtonPressed:" destination="uIj-UJ-diQ" eventType="touchUpInside" id="z3N-2l-qoV"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gW9-RM-674">
+                                <rect key="frame" x="0.0" y="488" width="320" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAJ-Ko-A8i">
+                                        <rect key="frame" x="82" y="22" width="156" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Let's Get Started!">
+                                            <color key="titleColor" red="0.93333333330000001" green="0.42352941179999998" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goButtonPressed:" destination="uIj-UJ-diQ" eventType="touchUpInside" id="z3N-2l-qoV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="xAJ-Ko-A8i" firstAttribute="centerX" secondItem="gW9-RM-674" secondAttribute="centerX" id="TcK-qG-pNV"/>
+                                    <constraint firstItem="xAJ-Ko-A8i" firstAttribute="centerY" secondItem="gW9-RM-674" secondAttribute="centerY" id="z8z-6n-VpK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.16078431369999999" green="0.1960784314" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="vUY-cT-1PL" firstAttribute="top" secondItem="CzJ-Tu-8Pl" secondAttribute="bottom" constant="-2" id="0aK-I4-flv"/>
                             <constraint firstAttribute="trailing" secondItem="vUY-cT-1PL" secondAttribute="trailing" id="2yZ-uB-9uQ"/>
-                            <constraint firstItem="xAJ-Ko-A8i" firstAttribute="top" secondItem="NUt-dY-kzr" secondAttribute="bottom" constant="8" id="6KB-Cr-IRy"/>
                             <constraint firstItem="CzJ-Tu-8Pl" firstAttribute="top" secondItem="JZ7-1I-hbv" secondAttribute="bottom" constant="40" id="6ar-Bh-CdY"/>
-                            <constraint firstItem="bpC-iq-jjE" firstAttribute="top" secondItem="xAJ-Ko-A8i" secondAttribute="bottom" constant="38" id="FR8-cN-RTc"/>
-                            <constraint firstItem="xAJ-Ko-A8i" firstAttribute="centerX" secondItem="YlW-fE-Qgv" secondAttribute="centerX" id="PS1-VX-4De"/>
+                            <constraint firstItem="gW9-RM-674" firstAttribute="trailing" secondItem="vUY-cT-1PL" secondAttribute="trailing" id="EoI-6J-Tyk"/>
+                            <constraint firstItem="gW9-RM-674" firstAttribute="leading" secondItem="vUY-cT-1PL" secondAttribute="leading" id="KxY-5d-evV"/>
                             <constraint firstItem="vUY-cT-1PL" firstAttribute="leading" secondItem="YlW-fE-Qgv" secondAttribute="leading" id="VwX-Ig-eYM"/>
-                            <constraint firstItem="NUt-dY-kzr" firstAttribute="trailing" secondItem="YlW-fE-Qgv" secondAttribute="trailingMargin" constant="4" id="Yfg-pl-Ewd"/>
+                            <constraint firstItem="NUt-dY-kzr" firstAttribute="trailing" secondItem="YlW-fE-Qgv" secondAttribute="trailingMargin" constant="8" id="Yfg-pl-Ewd"/>
                             <constraint firstItem="CzJ-Tu-8Pl" firstAttribute="centerX" secondItem="YlW-fE-Qgv" secondAttribute="centerX" id="gue-Ml-JNn"/>
-                            <constraint firstItem="NUt-dY-kzr" firstAttribute="leading" secondItem="YlW-fE-Qgv" secondAttribute="leadingMargin" constant="-4" id="kAa-Pw-11V"/>
-                            <constraint firstItem="NUt-dY-kzr" firstAttribute="top" secondItem="vUY-cT-1PL" secondAttribute="bottom" constant="8" id="qhy-Cd-vAm"/>
+                            <constraint firstItem="gW9-RM-674" firstAttribute="bottom" secondItem="bpC-iq-jjE" secondAttribute="top" id="hcp-o3-KlQ"/>
+                            <constraint firstItem="NUt-dY-kzr" firstAttribute="leading" secondItem="YlW-fE-Qgv" secondAttribute="leadingMargin" constant="-8" id="kAa-Pw-11V"/>
+                            <constraint firstItem="gW9-RM-674" firstAttribute="top" secondItem="NUt-dY-kzr" secondAttribute="bottom" constant="2" id="ln3-Fh-Pte"/>
+                            <constraint firstItem="NUt-dY-kzr" firstAttribute="top" secondItem="vUY-cT-1PL" secondAttribute="bottom" constant="-8" id="qhy-Cd-vAm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LlQ-p3-4kB"/>
