@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     var currentDelay: Double = 0.2
     var canRecord = true
     var lastRecordingID = ""
+    var incentiveShown = false
     
     let redColour = UIColor(red: 238/255, green: 108/255, blue: 77/255, alpha: 1)
     let whiteColour = UIColor(red: 224/255, green: 251/255, blue: 252/255, alpha: 1)
@@ -178,9 +179,12 @@ class ViewController: UIViewController {
     // MARK: Helper functions
     
     private func showTestingIncentive() {
-        let alert = UIAlertController(title: "Thanks for Testing!", message: "I wanted to thank you for taking the time to test my app. As a small incentive, I wanted to offer you any $5 gift card of your choice if you discover any bugs or unexpected behaviour. I want you to know how much I appreciate your time and effort. Also, if you find a crash or other serious bug which stops you dead in your tracks, I'll make it $10. Happy hunting!", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-        presentViewController(alert, animated: true, completion: nil)
+        if !incentiveShown {
+            incentiveShown = true
+            let alert = UIAlertController(title: "Thanks for Testing!", message: "I wanted to thank you for taking the time to test my app. As a small incentive, I wanted to offer you any $5 gift card of your choice if you discover any bugs or unexpected behaviour. I want you to know how much I appreciate your time and effort. Also, if you find a crash or other serious bug which stops you dead in your tracks, I'll make it $10. Happy hunting!", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     private func showTutorial() -> Bool {
