@@ -189,7 +189,15 @@ class ViewController: UIViewController {
     
     private func showTutorial() -> Bool {
         let defaults = NSUserDefaults.standardUserDefaults()
-        let key = "tutorialShown"
+        
+        // For testing purposes, this ensures that testers are shown the tutorial whenever the key is updated.
+        let previousKeys = ["tutorialShown"]
+        let key = "tutorialShown1"
+        
+        for previousKey in previousKeys {
+            defaults.setBool(false, forKey: previousKey)
+        }
+        
         if !defaults.boolForKey(key) {
             print("Showing tutorial")
             
