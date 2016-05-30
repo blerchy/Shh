@@ -15,6 +15,8 @@ class RecordingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var timer = NSTimer()
+    
     var currentlyPlaying = false
     var currentPlayingID = ""
     var player: AKAudioPlayer!
@@ -45,10 +47,13 @@ class RecordingsViewController: UIViewController {
         currentPlayingID = id
         currentlyPlaying = true
         player = AKAudioPlayer(recording.getDocumentsPath().stringByAppendingPathComponent("\(id).wav"))
+        let asset = AVURLAsset(URL: NSURL(fileURLWithPath: recording.getDocumentsPath().stringByAppendingPathComponent("\(id).wav")))
+        let duration = asset.duration
         AudioKit.output = player
         AudioKit.start()
         player.reloadFile()
         player.start()
+        timer = NSTimer.scheduledTimerWithTimeInterval(CMTimeGetSeconds(duration), target: self, selector: #selector(self.stopPlaying), userInfo: nil, repeats: false)
     }
     
     func stopPlaying() {
@@ -101,7 +106,7 @@ extension RecordingsViewController: UITableViewDataSource {
         let recording = Recording()
         let id = recording.getOrderedRecordingIDs()[indexPath.row]
         let recordingInfo = recording.getInfoOnID(id: id)
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! RecordingCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! RecordingCell // tailor:disable
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .MediumStyle
         dateFormatter.timeStyle = .ShortStyle
