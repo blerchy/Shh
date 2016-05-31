@@ -106,7 +106,7 @@ extension RecordingsViewController: UITableViewDataSource {
         let recording = Recording()
         let id = recording.getOrderedRecordingIDs()[indexPath.row]
         let recordingInfo = recording.getInfoOnID(id: id)
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! RecordingCell // tailor:disable
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! RecordingCell
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .MediumStyle
         dateFormatter.timeStyle = .ShortStyle
