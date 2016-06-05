@@ -68,6 +68,10 @@ class RecordingsViewController: UIViewController {
         AudioKit.stop()
     }
     
+    func share(id id: String) {
+        fatalError("RecordingsViewController.share(:) is unimplemented. Ain't I a stinker.")
+    }
+    
 }
 
 // MARK: - Table View Delegate

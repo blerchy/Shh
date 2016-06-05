@@ -75,8 +75,6 @@ class ViewController: UIViewController {
                 recordSwitch.enabled = false
                 print("Caught!")
             }
-            
-            showTestingIncentive()
         }
     }
 
@@ -177,15 +175,6 @@ class ViewController: UIViewController {
     }
     
     // MARK: Helper functions
-    
-    private func showTestingIncentive() {
-        if !incentiveShown {
-            incentiveShown = true
-            let alert = UIAlertController(title: "Thanks for Testing!", message: "I wanted to thank you for taking the time to test my app. As a small incentive, I wanted to offer you any $5 gift card of your choice if you discover any bugs or unexpected behaviour. I want you to know how much I appreciate your time and effort. Also, if you find a crash or other serious bug which stops you dead in your tracks, I'll make it $10. Happy hunting!", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-            presentViewController(alert, animated: true, completion: nil)
-        }
-    }
     
     private func showTutorial() -> Bool {
         let defaults = NSUserDefaults.standardUserDefaults()
