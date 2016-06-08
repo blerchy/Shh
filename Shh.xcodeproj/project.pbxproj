@@ -12,6 +12,10 @@
 		C9157B1E1CD07AD000879F00 /* RecordingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9157B1D1CD07AD000879F00 /* RecordingCell.swift */; };
 		C99247321CCF31AF0070B2AD /* Recordings.plist in Resources */ = {isa = PBXBuildFile; fileRef = C99247311CCF31AF0070B2AD /* Recordings.plist */; };
 		C9D4917B1CC9E8130004580B /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D4917A1CC9E8130004580B /* Recording.swift */; };
+		C9D714CE1D0404F900E8AB79 /* CleanroomASL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D714CD1D0404F900E8AB79 /* CleanroomASL.framework */; };
+		C9D714CF1D0404F900E8AB79 /* CleanroomASL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9D714CD1D0404F900E8AB79 /* CleanroomASL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C9D714D11D04050800E8AB79 /* CleanroomLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D714D01D04050800E8AB79 /* CleanroomLogger.framework */; };
+		C9D714D21D04050800E8AB79 /* CleanroomLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9D714D01D04050800E8AB79 /* CleanroomLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C9E539961CC5EF7400FCCB44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E539951CC5EF7400FCCB44 /* AppDelegate.swift */; };
 		C9E539981CC5EF7400FCCB44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E539971CC5EF7400FCCB44 /* ViewController.swift */; };
 		C9E5399B1CC5EF7400FCCB44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E539991CC5EF7400FCCB44 /* Main.storyboard */; };
@@ -29,6 +33,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C9D714D21D04050800E8AB79 /* CleanroomLogger.framework in Embed Frameworks */,
+				C9D714CF1D0404F900E8AB79 /* CleanroomASL.framework in Embed Frameworks */,
 				C9E539A91CC5EFA400FCCB44 /* AudioKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -42,6 +48,8 @@
 		C9157B1D1CD07AD000879F00 /* RecordingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingCell.swift; sourceTree = "<group>"; };
 		C99247311CCF31AF0070B2AD /* Recordings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Recordings.plist; sourceTree = "<group>"; };
 		C9D4917A1CC9E8130004580B /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
+		C9D714CD1D0404F900E8AB79 /* CleanroomASL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CleanroomASL.framework; path = Carthage/Build/iOS/CleanroomASL.framework; sourceTree = "<group>"; };
+		C9D714D01D04050800E8AB79 /* CleanroomLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CleanroomLogger.framework; path = Carthage/Build/iOS/CleanroomLogger.framework; sourceTree = "<group>"; };
 		C9E539921CC5EF7400FCCB44 /* Shh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E539951CC5EF7400FCCB44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9E539971CC5EF7400FCCB44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9D714D11D04050800E8AB79 /* CleanroomLogger.framework in Frameworks */,
+				C9D714CE1D0404F900E8AB79 /* CleanroomASL.framework in Frameworks */,
 				C9E539A81CC5EFA400FCCB44 /* AudioKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +87,8 @@
 		C9E539891CC5EF7400FCCB44 = {
 			isa = PBXGroup;
 			children = (
+				C9D714D01D04050800E8AB79 /* CleanroomLogger.framework */,
+				C9D714CD1D0404F900E8AB79 /* CleanroomASL.framework */,
 				C9E539A71CC5EFA400FCCB44 /* AudioKit.framework */,
 				C9E539941CC5EF7400FCCB44 /* Shh */,
 				C9E539931CC5EF7400FCCB44 /* Products */,
@@ -122,6 +134,8 @@
 				C9E539AA1CC5EFA400FCCB44 /* Embed Frameworks */,
 				5E0FF078B56081D3942CC30E /* Tailor */,
 				C993B8021CF419EF001E4FBB /* Fix AudioKit */,
+				C9D714D31D04059100E8AB79 /* Make Sure Dependancies Are Built */,
+				C9D714CA1D0404CB00E8AB79 /* Fix Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -209,6 +223,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/AudioKit.framework/fix-framework.sh";
+		};
+		C9D714CA1D0404CB00E8AB79 /* Fix Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/CleanroomASL.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CleanroomLogger.framework",
+			);
+			name = "Fix Carthage Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			showEnvVarsInLog = 0;
+		};
+		C9D714D31D04059100E8AB79 /* Make Sure Dependancies Are Built */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Make Sure Dependancies Are Built";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ ! -d \"#(SRCROOT)/Carthage/Build/iOS\" ]; then\n  carthage build --platform iOS\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -337,6 +382,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Shh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -354,6 +400,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Shh/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

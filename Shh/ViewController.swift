@@ -10,6 +10,7 @@
 
 import UIKit
 import AudioKit
+import CleanroomLogger
 
 class ViewController: UIViewController {
     
@@ -188,13 +189,13 @@ class ViewController: UIViewController {
         }
         
         if !defaults.boolForKey(key) {
-            print("Showing tutorial")
             
             defaults.setBool(true, forKey: key)
+            Log.verbose?.message("Showing tutorial")
             performSegueWithIdentifier("tutorialSegue", sender: self)
             return true
         } else {
-            print("Not showing tutorial")
+            Log.verbose?.message("Not showing tutorial")
             return false
         }
     }
