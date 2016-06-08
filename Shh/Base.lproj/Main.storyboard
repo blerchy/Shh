@@ -294,7 +294,7 @@
                                 <rect key="frame" x="252" y="20" width="52" height="30"/>
                                 <state key="normal" title="Tutorial"/>
                                 <connections>
-                                    <segue destination="uIj-UJ-diQ" kind="modal" id="lDh-Xa-7CS"/>
+                                    <action selector="tutorialButtonPressed:" destination="HnD-Qj-aAW" eventType="touchUpInside" id="PwG-Hl-fQU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -314,6 +314,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="0cH-Mq-nWK" id="CL9-Hn-OhJ"/>
+                        <segue destination="uIj-UJ-diQ" kind="modal" identifier="tutorialSegue" id="NW1-7B-2MO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SqM-bD-gJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -326,6 +327,6 @@
         <image name="mic" width="38" height="63"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lDh-Xa-7CS"/>
+        <segue reference="NW1-7B-2MO"/>
     </inferredMetricsTieBreakers>
 </document>

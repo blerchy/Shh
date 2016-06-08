@@ -29,11 +29,6 @@ class RecordingsViewController: UIViewController {
         player = AKAudioPlayer(NSBundle.mainBundle().pathForResource("silence", ofType: "wav")!)
     }
     
-    @IBAction func backButtonPressed(sender: AnyObject) {
-        AudioKit.stop()
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     func playRecording(id id: String) {
         for cell in tableView.visibleCells {
             if let recordingCell = cell as? RecordingCell {
@@ -71,6 +66,19 @@ class RecordingsViewController: UIViewController {
     
     func share(id id: String) {
         fatalError("RecordingsViewController.share(:) is unimplemented. Ain't I a stinker.")
+    }
+    
+    // MARK: IBActions
+    
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        stopPlaying()
+        AudioKit.stop()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func tutorialButtonPressed(sender: AnyObject) {
+        stopPlaying()
+        performSegueWithIdentifier("tutorialSegue", sender: self)
     }
     
 }
