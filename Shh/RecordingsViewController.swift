@@ -88,7 +88,8 @@ extension RecordingsViewController: UITableViewDelegate {
                 tableView.reloadData()
                 stopPlaying()
             } catch {
-                let alert = UIAlertController(title: "Oh oh...", message: "Something went wrong, and your recording couldn't be deleted. Sorry about that.", preferredStyle: .Alert)
+                Log.warning?.message("Recording couldn't be deleted. ID = \(cell.id)")
+                let alert = UIAlertController(title: "Oh oh...", message: "Something went wrong, and your recording couldn't be deleted. If this issue persists, you might need to delete and reinstall the app. Sorry about that.", preferredStyle: .Alert)
                 let okButton = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
                 alert.addAction(okButton)
                 presentViewController(alert, animated: true, completion: nil)
