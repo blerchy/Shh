@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioKit
+import CleanroomLogger
 
 // MARK: RecordingsViewController
 
@@ -93,6 +94,14 @@ extension RecordingsViewController: UITableViewDelegate {
                 presentViewController(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // Whenever a row is selected, act like "play" was pressed on it if audio is playing.
+        if currentlyPlaying {
+            stopPlaying()
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }
