@@ -347,6 +347,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="0cH-Mq-nWK" id="CL9-Hn-OhJ"/>
+                        <outlet property="tutorialButton" destination="5tf-tw-qqj" id="Lc5-pE-xaA"/>
                         <segue destination="uIj-UJ-diQ" kind="modal" identifier="tutorialSegue" id="NW1-7B-2MO"/>
                     </connections>
                 </viewController>
@@ -360,6 +361,6 @@
         <image name="mic" width="38" height="63"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="afr-Ec-UBe"/>
+        <segue reference="NW1-7B-2MO"/>
     </inferredMetricsTieBreakers>
 </document>

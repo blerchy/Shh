@@ -15,6 +15,7 @@ import CleanroomLogger
 class RecordingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tutorialButton: UIButton!
     
     var timer = NSTimer()
     
@@ -27,6 +28,13 @@ class RecordingsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         player = AKAudioPlayer(NSBundle.mainBundle().pathForResource("silence", ofType: "wav")!)
+        
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        if !delegate.canShowTutorial {
+            tutorialButton.enabled = false
+            tutorialButton.alpha = 0
+            Log.info?.message("Hiding tutorial button because screen is too small")
+        }
     }
     
     func playRecording(id id: String) {
