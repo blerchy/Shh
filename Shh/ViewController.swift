@@ -188,7 +188,14 @@ class ViewController: UIViewController {
             defaults.setBool(false, forKey: previousKey)
         }
         
-        if !defaults.boolForKey(key) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        if !appDelegate.canShowTutorial {
+            Log.info?.message("Not showing tutorial because screen is too small")
+            return false
+        }
+        
+        if !defaults.boolForKey(key) && appDelegate.canShowTutorial {
             
             defaults.setBool(true, forKey: key)
             Log.verbose?.message("Showing tutorial")

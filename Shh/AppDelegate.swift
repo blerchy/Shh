@@ -13,12 +13,17 @@ import CleanroomLogger
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var canShowTutorial = true
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         // Enable logging
         Log.enable(minimumSeverity: .Verbose)
+        
+        // Figure out if the app can show the tutorial
+        let screenHight = UIScreen.mainScreen().bounds.height
+        canShowTutorial = screenHight > 560
         
         return true
     }
