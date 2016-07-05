@@ -1,0 +1,8 @@
+Totally Free | No Ads | No In-App Purchases
+
+This app listens to you talk, and plays back your voice at a slight delay. This confuses your brain, and can make it very difficult to speak properly. The app relies on Delayed Auditory Feedback to achieve this effect. Here's an explanation from Wikipedia:
+
+"...effects of delayed auditory feedback in non-stutterers include reduction in rate of speech, increase in intensity, and increase in fundamental frequency in order to overcome the effects of the feedback."
+- "Delayed Auditory Feedback." Wikipedia, The Free Encyclopedia.
+
+The app also allows you to record your speech jamming sessions, allowing you to play them back at a later time.
